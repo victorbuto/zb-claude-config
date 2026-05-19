@@ -1,0 +1,16 @@
+.DS_Store
+settings.local.json
+.last-cleanup
+backups/
+cache/
+debug/
+downloads/
+file-history/
+history.jsonl
+ide/
+mcp-needs-auth-cache.json
+plugins/
+projects/
+session-env/
+sessions/
+shell-snapshots/
