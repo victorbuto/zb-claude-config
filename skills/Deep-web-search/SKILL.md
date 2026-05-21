@@ -1,6 +1,15 @@
 ---
 name: Deep-web-search
-description: Advanced keyword generation and web search using the Slice Method. Use when the user needs to generate effective search queries, find information beyond surface-level results, or bypass commercial noise in search engines. Triggers on requests for "search keywords", "find information", "research", "search strategy", or when the user struggles to find relevant results with basic searches. This skill focuses on search execution without fact-checking — pair with a fact-checking skill for verification.
+description: |
+  Глубокое исследование через Slice Method: 6 шагов (вопрос → уточнение по SPICE → план запросов → параллельные саб-агенты с web-поиском → QA-аудит → синтез). Помогает обходить коммерческий шум, генерировать продвинутые поисковые запросы, находить информацию глубже первой страницы Google.
+
+  Триггеры (русский):
+  «сделай дип рисерч», «deep research», «дип рисерч», «дипсерч», «глубоко исследуй», «запусти глубокий поиск», «глубокое исследование», «проведи исследование», «глубокий рисёрч», «дип поиск», «исследуй тщательно», «нужен глубокий рисерч», «копни глубоко».
+
+  Триггеры (English):
+  "deep research", "deep web search", "deepsearch", "do deep research", "research thoroughly", "advanced search", "research keywords", "search strategy", "find information beyond surface", "bypass commercial noise", "slice method search".
+
+  Не использовать для: быстрых fact-check (использует много токенов), простого one-shot вопроса (используй WebSearch). Этот скилл фокусируется на поиске и сборе данных — для верификации сочетай с fact-checking скиллом.
 ---
 
 # Slice Search Skill
