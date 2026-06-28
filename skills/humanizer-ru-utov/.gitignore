@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# eval артефакты (генерируемые)
+eval/out/
+*.local.json
+
+# секреты детекторов / API
+.env
+
+# macOS / локальный тулинг
+.DS_Store
+.claude/

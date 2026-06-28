@@ -1,5 +1,5 @@
 ---
-name: solo-skill-audit
+name: skill-audit
 description: Use when "audit skill", "review skill quality", "check skill", "skill score", "skill checklist", "is this skill good", or evaluating skill against best practices. Do NOT use for KB audits (/audit) or code review (/review).
 license: MIT
 metadata:
