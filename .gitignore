@@ -15,3 +15,6 @@ session-env/
 sessions/
 shell-snapshots/
 node_modules/
+
+# Вложенная отдельная репа скилла (свой remote)
+skills/qual-interview-analysis/
