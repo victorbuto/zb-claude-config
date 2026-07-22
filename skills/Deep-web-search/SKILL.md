@@ -15,7 +15,7 @@ argument-hint: [исследовательский вопрос или пуст�
 - **Reddit бесполезен для российских ниш.** Для RU-брендов и тем используй pikabu.ru, dzen.ru, otzovik.com, irecommend.ru. Reddit для нишевых RU-брендов вернёт нерелевант (англоязычные омонимы).
 - **Проверь домен перед `tavily_crawl`.** Сначала запрос `[бренд] официальный сайт` — иначе крауль уйдёт на чужой/устаревший домен и запрос сгорит впустую.
 - **Не ставь `userLocation: US` для российских тем.** Опусти параметр или ставь RU, иначе выдача уезжает в англоязычный контекст и Exa возвращает 2 результата вместо 10.
-- **Не пропускай Phase 1 (SPICE).** Без 5 ответов выбор слайсов и кейсов идёт наугад — частые промахи на «что искать» и «на каком языке».
+- **Не пропускай Phase 1 (SPICE).** Без 6 ответов выбор слайсов и кейсов идёт наугад — частые промахи на «что искать» и «на каком языке».
 - **Per-query attribution в Phase 3 обязательна.** Без неё QA-аудит Phase 3.5 не сможет оценить ни ключевые слова, ни выбор инструментов.
 
 Полный накопительный список с источниками (датами тестов) — в [references/operational-rules.md](references/operational-rules.md). Туда же добавляются новые правила после каждого прогона.
@@ -36,29 +36,31 @@ argument-hint: [исследовательский вопрос или пуст�
 
 ## Phase 1: Clarify the Research Question (SPICE)
 
-Once you have the user's research question, ask **5 clarifying questions** using the **SPICE framework** (adapted from academic research methodology: Setting, Perspective, Interest, Comparison, Evaluation).
+Once you have the user's research question, ask **6 clarifying questions**: the **SPICE framework** (Setting, Perspective, Intervention, Comparison, Evaluation — канон из `Standarts/Research Questions Framework.md`) plus one extra question about existing knowledge.
 
 The goal: expose blind spots and hidden assumptions in the user's request.
 
-**Ask these 5 questions and wait for answers before proceeding to Phase 2:**
+**Ask these 6 questions and wait for answers before proceeding to Phase 2:**
 
-| # | SPICE element | Question to ask | What it reveals |
+| # | Element | Question to ask | What it reveals |
 |---|---------------|-----------------|-----------------|
-| 1 | **Setting** | Какая география, отрасль, сегмент рынка? Есть ли временные рамки (последний год, 5 лет, всё время)? | Boundaries — сужает область поиска |
-| 2 | **Perspective** | Чей взгляд важен — бизнес, академия, потребители, инвесторы? Для какой аудитории результат? | Angle — определяет тип источников и язык |
-| 3 | **Interest** | Что конкретно нужно найти — обзор темы, конкретные цифры/данные, кейсы, список игроков, тренды? | Depth — задаёт глубину и формат поиска |
+| 1 | **Setting** | Где происходит изучаемое — география, отрасль, канал, этап пути? Есть ли временные рамки (последний год, 5 лет, всё время)? | Boundaries — сужает область поиска |
+| 2 | **Perspective** | Чьё поведение/мнение изучаем — сегмент, характеристики? Для какой аудитории результат? | Angle — определяет тип источников и язык |
+| 3 | **Intervention** | Что именно исследуем — продукт, канал, поведение, конкурент, явление? | Object — фиксирует объект исследования |
 | 4 | **Comparison** | Есть ли с чем сравнивать? Нужен бенчмарк (другая страна, период, конкурент)? | Contrast — добавляет сравнительное измерение |
-| 5 | **Existing knowledge** | Что уже знаете по теме? Какие источники/статьи уже видели? Что НЕ нужно искать? | Gaps — исключает дубли, фокусирует на белых пятнах |
+| 5 | **Evaluation** | Как поймём, что нашли нужное? Что нужно на выходе — обзор, цифры/данные, кейсы, список игроков, тренды? Какое решение примем по результатам? | Output — задаёт критерий успеха, глубину и формат |
+| 6 | **Existing knowledge** *(доп., вне SPICE)* | Что уже знаете по теме? Какие источники/статьи уже видели? Что НЕ нужно искать? | Gaps — исключает дубли, фокусирует на белых пятнах |
 
 **Format for asking:**
 ```
-Перед поиском уточню 5 вопросов по фреймворку SPICE:
+Перед поиском уточню вопросы по фреймворку SPICE:
 
-1. **Рамки:** [вопрос адаптированный к теме]
-2. **Перспектива:** [вопрос]
-3. **Что ищем:** [вопрос]
-4. **Сравнение:** [вопрос]
-5. **Уже знаете:** [вопрос]
+1. **Рамки (S):** [вопрос адаптированный к теме]
+2. **Перспектива (P):** [вопрос]
+3. **Объект (I):** [вопрос]
+4. **Сравнение (C):** [вопрос]
+5. **Критерий успеха (E):** [вопрос]
+6. **Уже знаете:** [вопрос]
 ```
 
 After user answers, incorporate their responses into Phase 2 analysis as constraints.
@@ -71,10 +73,10 @@ Use SPICE answers to inform query generation.
 
 ### 2.1 Analyze the Query
 
-- **Core topic** — main subject (from user request + SPICE answers)
-- **Goal** — facts, sources, opinions, data, comparison (from SPICE #3 Interest)
+- **Core topic** — main subject (from user request + SPICE #3 Intervention)
+- **Goal** — facts, sources, opinions, data, comparison (from SPICE #5 Evaluation)
 - **Query type** — classify for slice distribution
-- **Constraints** — from SPICE #1 Setting + #2 Perspective + #5 Existing knowledge
+- **Constraints** — from SPICE #1 Setting + #2 Perspective + #6 Existing knowledge
 
 | Query Type | Primary Slices | Secondary Slices |
 |------------|----------------|------------------|
